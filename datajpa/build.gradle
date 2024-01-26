@@ -5,13 +5,28 @@ plugins {
 }
 
 group = "com.hansanhha.spring"
-version = "datajpa"
+version= property "spring.boot.version"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 dependencies {
     implementation libs.spring.boot
     implementation libs.spring.boot.test
     implementation libs.spring.boot.data.jpa
     implementation libs.spring.boot.web
+
+    /*
+        querydsl dependencies
+        버전 카탈로그에서 classifier를 지정할 수 없으므로 의존성 선언할 때 지정해야 됨
+     */
+    implementation variantOf(libs.querydsl.jpa) { classifier("jakarta") }
+    annotationProcessor variantOf(libs.querydsl.apt) { classifier("jakarta") }
+    annotationProcessor libs.jakarta.annotation.api
+    annotationProcessor libs.jakarta.persistence.api
+
     runtimeOnly libs.h2
 }
-

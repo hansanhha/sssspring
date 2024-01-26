@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.hansanhha.spring"
-version = "boot"
+version= property "spring.boot.version"
 
 dependencies {
     implementation libs.spring.boot
