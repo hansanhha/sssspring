@@ -12,6 +12,10 @@ java {
     }
 }
 
+dependencies {
+    compileOnly libs.lombok
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }

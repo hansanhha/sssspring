@@ -20,5 +20,8 @@ querydsl-apt = { module = "com.querydsl:querydsl-apt", version.ref="querydsl_ver
 jakarta-annotation-api = { module = "jakarta.annotation:jakarta.annotation-api" }
 jakarta-persistence-api = { module = "jakarta.persistence:jakarta.persistence-api" }
 
+# lombok
+lombok = { module="org.projectlombok:lombok" }
+
 # Databaes
 h2 = { module="com.h2database:h2" }
