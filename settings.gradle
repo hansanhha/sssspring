@@ -5,4 +5,5 @@ plugins {
 rootProject.name = 'sssspring'
 include 'boot'
 include 'datajpa'
+include 'modulith'
 

@@ -1,0 +1,25 @@
+plugins {
+    id "com.hansanhha.spring.java"
+    alias libs.plugins.spring.boot
+    alias libs.plugins.spring.management
+}
+
+group = "com.hansanhha.spring"
+version= property "spring.boot.version"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation libs.spring.modulith.core
+    implementation libs.spring.modulith.jpa
+    testImplementation libs.spring.moduliith.test
+
+    implementation libs.spring.boot.data.jpa
+    implementation libs.spring.boot.web
+
+    runtimeOnly libs.h2
+}
