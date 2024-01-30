@@ -1,7 +1,7 @@
 plugins {
     id "com.hansanhha.spring.java"
-    alias libs.plugins.spring.boot
-    alias libs.plugins.spring.management
+    alias io.plugins.spring.boot
+    alias io.plugins.spring.management
 }
 
 group = "com.hansanhha.spring"
@@ -14,12 +14,12 @@ configurations {
 }
 
 dependencies {
-    implementation libs.spring.modulith.core
-    implementation libs.spring.modulith.jpa
-    testImplementation libs.spring.moduliith.test
+    implementation io.spring.modulith.core
+    implementation io.spring.modulith.jpa
+    testImplementation io.spring.moduliith.test
 
-    implementation libs.spring.boot.data.jpa
-    implementation libs.spring.boot.web
+    implementation io.spring.boot.data.jpa
+    implementation io.spring.boot.web
 
-    runtimeOnly libs.h2
+    runtimeOnly io.h2
 }

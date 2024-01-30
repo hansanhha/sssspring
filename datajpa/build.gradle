@@ -1,7 +1,7 @@
 plugins {
     id "com.hansanhha.spring.java"
-    alias libs.plugins.spring.boot
-    alias libs.plugins.spring.management
+    alias io.plugins.spring.boot
+    alias io.plugins.spring.management
 }
 
 group = "com.hansanhha.spring"
@@ -14,19 +14,19 @@ configurations {
 }
 
 dependencies {
-    implementation libs.spring.boot
-    implementation libs.spring.boot.test
-    implementation libs.spring.boot.data.jpa
-    implementation libs.spring.boot.web
+    implementation io.spring.boot
+    implementation io.spring.boot.test
+    implementation io.spring.boot.data.jpa
+    implementation io.spring.boot.web
 
     /*
         querydsl dependencies
         버전 카탈로그에서 classifier를 지정할 수 없으므로 의존성 선언할 때 지정해야 됨
      */
-    implementation variantOf(libs.querydsl.jpa) { classifier("jakarta") }
-    annotationProcessor variantOf(libs.querydsl.apt) { classifier("jakarta") }
-    annotationProcessor libs.jakarta.annotation.api
-    annotationProcessor libs.jakarta.persistence.api
+    implementation variantOf(io.querydsl.jpa) { classifier("jakarta") }
+    annotationProcessor variantOf(io.querydsl.apt) { classifier("jakarta") }
+    annotationProcessor io.jakarta.annotation.api
+    annotationProcessor io.jakarta.persistence.api
 
-    runtimeOnly libs.h2
+    runtimeOnly io.h2
 }

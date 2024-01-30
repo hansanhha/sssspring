@@ -1,17 +1,17 @@
 plugins {
     id "com.hansanhha.spring.java"
-    alias libs.plugins.spring.boot
-    alias libs.plugins.spring.management
+    alias io.plugins.spring.boot
+    alias io.plugins.spring.management
 }
 
 group = "com.hansanhha.spring"
 version= property "spring.boot.version"
 
 dependencies {
-    implementation libs.spring.boot
-    implementation libs.spring.boot.test
-    implementation libs.spring.boot.data.jpa
-    implementation libs.spring.boot.web
-    runtimeOnly libs.h2
+    implementation io.spring.boot
+    implementation io.spring.boot.test
+    implementation io.spring.boot.data.jpa
+    implementation io.spring.boot.web
+    runtimeOnly io.h2
 }
 
