@@ -23,6 +23,10 @@ dependencyResolutionManagement {
         create("db") {
             from(files("database.versions.toml"))
         }
+
+        create("libs") {
+            from(files("libs.versions.toml"))
+        }
     }
 }
 

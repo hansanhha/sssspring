@@ -12,11 +12,14 @@ configurations {
 dependencies {
     implementation io.spring.modulith.core
     implementation io.spring.modulith.jpa
+    runtimeOnly io.spring.modulith.actuator
     testImplementation io.spring.moduliith.test
+    implementation libs.jmolecules.spring
 
+    implementation io.spring.boot.configuration.processor
     implementation io.spring.boot.data.jpa
     implementation io.spring.boot.web
-    testImplementation io.spring.boot.test
+    runtimeOnly io.spring.boot.actuator
 
     runtimeOnly db.h2
 }
