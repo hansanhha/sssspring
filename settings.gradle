@@ -19,6 +19,10 @@ dependencyResolutionManagement {
         create("io") {
             from(files("spring.versions.toml"))
         }
+
+        create("db") {
+            from(files("database.versions.toml"))
+        }
     }
 }
 

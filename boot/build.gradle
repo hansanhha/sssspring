@@ -12,6 +12,6 @@ dependencies {
     implementation io.spring.boot.test
     implementation io.spring.boot.data.jpa
     implementation io.spring.boot.web
-    runtimeOnly io.h2
+    runtimeOnly db.h2
 }
 

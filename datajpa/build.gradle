@@ -28,5 +28,5 @@ dependencies {
     annotationProcessor io.jakarta.annotation.api
     annotationProcessor io.jakarta.persistence.api
 
-    runtimeOnly io.h2
+    runtimeOnly db.h2
 }

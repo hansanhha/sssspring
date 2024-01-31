@@ -26,6 +26,3 @@ jakarta-persistence-api = { module = "jakarta.persistence:jakarta.persistence-ap
 
 # lombok
 lombok = { module="org.projectlombok:lombok" }
-
-# Databaes
-h2 = { module="com.h2database:h2" }
