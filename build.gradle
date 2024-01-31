@@ -1,0 +1,14 @@
+subprojects {
+    apply {
+        plugin("com.hansanhha.spring.java")
+    }
+
+    group = "com.hansanhha.spring"
+    version = property "spring.boot.version"
+
+    plugins.withId("com.hansanhha.spring.java") {
+        tasks.named("test") {
+            useJUnitPlatform()
+        }
+    }
+}

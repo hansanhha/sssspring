@@ -1,11 +1,7 @@
 plugins {
-    id "com.hansanhha.spring.java"
     alias io.plugins.spring.boot
     alias io.plugins.spring.management
 }
-
-group = "com.hansanhha.spring"
-version= property "spring.boot.version"
 
 dependencies {
     implementation io.spring.boot
