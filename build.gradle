@@ -4,7 +4,6 @@ subprojects {
     }
 
     group = "com.hansanhha.spring"
-    version = property "spring.boot.version"
 
     configurations {
         testCompileOnly.extendsFrom compileOnly
