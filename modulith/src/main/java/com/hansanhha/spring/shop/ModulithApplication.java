@@ -15,6 +15,6 @@ public class ModulithApplication {
     public static void main(String[] args) {
         SpringApplication.run(ModulithApplication.class, args)
                 .getBean(OrderManagement.class)
-                .complete(new Order());
+                .request(new Order());
     }
 }

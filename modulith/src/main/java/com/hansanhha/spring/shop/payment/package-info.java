@@ -1,4 +1,4 @@
 @org.springframework.modulith.ApplicationModule(
         allowedDependencies = "order"
 )
-package com.hansanhha.spring.shop.inventory;
+package com.hansanhha.spring.shop.payment;

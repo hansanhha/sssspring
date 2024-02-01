@@ -14,7 +14,7 @@ class ApplicationIntegrationTests {
 
     @Test
     void completeOrder() throws Exception {
-        orders.complete(new Order());
+        orders.request(new Order());
 
         Thread.sleep(2000);
     }

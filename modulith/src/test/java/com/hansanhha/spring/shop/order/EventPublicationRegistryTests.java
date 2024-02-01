@@ -27,7 +27,7 @@ class EventPublicationRegistryTests {
     void leavesPublicationIncompleteForFailingListener(Scenario scenario) throws Exception {
         var order = new Order();
 
-        scenario.stimulate(() -> orders.complete(order))
+        scenario.stimulate(() -> orders.request(order))
                 .andWaitForStateChange(() -> listener.getEx())
                 .andVerify(__ -> {
                     assertThat(registry.findIncompletePublications()).hasSize(1);
@@ -39,7 +39,7 @@ class EventPublicationRegistryTests {
         @Getter Exception ex;
 
         @ApplicationModuleListener
-        void foo(OrderCompletedEvent event) {
+        void foo(OrderRequestEvent event) {
             var exception = new IllegalStateException("¯\\_(ツ)_/¯");
 
             try {

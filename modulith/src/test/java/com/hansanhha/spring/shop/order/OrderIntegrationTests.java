@@ -1,8 +1,11 @@
 package com.hansanhha.spring.shop.order;
 
+import com.hansanhha.spring.shop.payment.PaymentCompletedEvent;
+import com.hansanhha.spring.shop.payment.entity.Payment;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.test.ApplicationModuleTest;
+import org.springframework.modulith.test.ApplicationModuleTest.BootstrapMode;
 import org.springframework.modulith.test.Scenario;
 
 @ApplicationModuleTest
@@ -23,12 +26,23 @@ class OrderIntegrationTests {
     }
 
     @Test
-    void publishOrderCompletion(Scenario scenario) throws Exception {
+    void publishOrderRequest(Scenario scenario) throws Exception {
         var reference = new Order();
 
-        scenario.stimulate(() -> orders.complete(reference))
-                .andWaitForEventOfType(OrderCompletedEvent.class)
-                .matchingMappedValue(OrderCompletedEvent::orderId, reference.getId())
+        scenario.stimulate(() -> orders.request(reference))
+                .andWaitForEventOfType(OrderRequestEvent.class)
+                .matchingMappedValue(OrderRequestEvent::orderId, reference.getId())
                 .toArrive();
     }
+
+//    @Test
+//    void publishOrderCompletion(Scenario scenario) throws Exception {
+//        var order = new Order();
+//        var payment = Payment.create(order.getId().toString(), 1000);
+//
+//        scenario.stimulate(() -> orders.complete(new PaymentCompletedEvent(payment.getPaymentIdentifier(), order.getId())))
+//                .andWaitForEventOfType(OrderCompletedEvent.class)
+//                .matchingMappedValue(OrderCompletedEvent::orderId, order.getId())
+//                .toArrive();
+//    }
 }
