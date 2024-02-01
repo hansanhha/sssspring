@@ -6,12 +6,6 @@ subprojects {
     group = "com.hansanhha.spring"
     version = property "spring.boot.version"
 
-    plugins.withId("com.hansanhha.spring.java") {
-        tasks.named("test") {
-            useJUnitPlatform()
-        }
-    }
-
     configurations {
         testCompileOnly.extendsFrom compileOnly
         testAnnotationProcessor.extendsFrom annotationProcessor
