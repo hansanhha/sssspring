@@ -1,4 +1,7 @@
 package com.hansanhha.spring.shop.inventory;
 
-public class InventoryInternal {
+import org.springframework.stereotype.Component;
+
+@Component
+class InventoryInternal {
 }

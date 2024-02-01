@@ -19,6 +19,8 @@ spring-boot-configuration-processor = { module="org.springframework.boot:spring-
 
 # Spring Modulith
 spring-modulith-core = { module="org.springframework.modulith:spring-modulith-starter-core", version.ref="spring_modulith_version"}
+spring-modulith-events-api =  { module="org.springframework.modulith:spring-modulith-events-api", version.ref="spring_modulith_version"}
+spring-modulith-events-core = { module="org.springframework.modulith:spring-modulith-events-core", version.ref="spring_modulith_version"}
 spring-modulith-jpa = { module="org.springframework.modulith:spring-modulith-starter-jpa", version.ref="spring_modulith_version"}
 spring-moduliith-test = { module="org.springframework.modulith:spring-modulith-starter-test", version.ref="spring_modulith_version"}
 spring-modulith-actuator = { module="org.springframework.modulith:spring-modulith-actuator", version.ref="spring_modulith_version"}

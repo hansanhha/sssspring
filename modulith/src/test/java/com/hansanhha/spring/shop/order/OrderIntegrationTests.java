@@ -1,10 +1,15 @@
 package com.hansanhha.spring.shop.order;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.test.ApplicationModuleTest;
+import org.springframework.modulith.test.Scenario;
 
 @ApplicationModuleTest
-public class OrderIntegrationTests {
+@RequiredArgsConstructor
+class OrderIntegrationTests {
+
+    private final OrderManagement orders;
 
     /*
         @ApplicationModuleTest
@@ -15,5 +20,15 @@ public class OrderIntegrationTests {
      */
     @Test
     void contextLoads() {
+    }
+
+    @Test
+    void publishOrderCompletion(Scenario scenario) throws Exception {
+        var reference = new Order();
+
+        scenario.stimulate(() -> orders.complete(reference))
+                .andWaitForEventOfType(OrderCompletedEvent.class)
+                .matchingMappedValue(OrderCompletedEvent::orderId, reference.getId())
+                .toArrive();
     }
 }
