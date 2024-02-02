@@ -1,4 +1,4 @@
-package com.hansanhha.spring.shop.order;
+package com.hansanhha.spring.shop.order.events;
 
 import com.hansanhha.spring.shop.order.Order.OrderIdentifier;
 

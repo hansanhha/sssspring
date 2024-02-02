@@ -1,11 +1,9 @@
 package com.hansanhha.spring.shop.order;
 
-import com.hansanhha.spring.shop.payment.PaymentCompletedEvent;
-import com.hansanhha.spring.shop.payment.entity.Payment;
+import com.hansanhha.spring.shop.order.events.OrderRequestEvent;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.test.ApplicationModuleTest;
-import org.springframework.modulith.test.ApplicationModuleTest.BootstrapMode;
 import org.springframework.modulith.test.Scenario;
 
 @ApplicationModuleTest

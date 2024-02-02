@@ -1,15 +1,13 @@
 package com.hansanhha.spring.shop.payment;
 
-import com.hansanhha.spring.shop.order.OrderRequestEvent;
+import com.hansanhha.spring.shop.order.events.OrderRequestEvent;
 import com.hansanhha.spring.shop.payment.entity.Payment;
-import com.hansanhha.spring.shop.payment.entity.Payment.PaymentIdentifier;
+import com.hansanhha.spring.shop.payment.events.PaymentCompletedEvent;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.modulith.events.ApplicationModuleListener;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

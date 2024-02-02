@@ -1,5 +1,6 @@
 package com.hansanhha.spring.shop.order;
 
+import com.hansanhha.spring.shop.order.events.OrderRequestEvent;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;

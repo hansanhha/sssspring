@@ -1,12 +1,13 @@
 package com.hansanhha.spring.shop.order;
 
+import com.hansanhha.spring.shop.order.events.OrderCompletedEvent;
+import com.hansanhha.spring.shop.order.events.OrderRequestEvent;
 import com.hansanhha.spring.shop.order.internal.OrderInternal;
-import com.hansanhha.spring.shop.payment.PaymentCompletedEvent;
+import com.hansanhha.spring.shop.payment.events.PaymentCompletedEvent;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
@@ -29,10 +30,10 @@ public class OrderManagement {
         events.publishEvent(new OrderRequestEvent(order.getId()));
     }
 
-    @ApplicationModuleListener
-    @Transactional
-    public void complete(PaymentCompletedEvent event) {
-        log.info("Received payment completion for {}.", event.orderId());
-        events.publishEvent(new OrderCompletedEvent(event.orderId()));
-    }
+//    @ApplicationModuleListener
+//    @Transactional
+//    public void complete(PaymentCompletedEvent event) {
+//        log.info("Received payment completion for {}.", event.orderId());
+//        events.publishEvent(new OrderCompletedEvent(event.orderId()));
+//    }
 }
