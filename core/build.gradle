@@ -1,0 +1,9 @@
+plugins {
+    alias io.plugins.spring.boot
+    alias io.plugins.spring.management
+}
+
+dependencies {
+    implementation io.spring.boot
+    testImplementation io.spring.boot.test
+}
