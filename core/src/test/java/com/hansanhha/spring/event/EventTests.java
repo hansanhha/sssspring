@@ -1,14 +1,13 @@
 package com.hansanhha.spring.event;
 
-import com.hansanhha.spring.event.entity.SimpleStockMarket;
-import com.hansanhha.spring.event.entity.Stock;
-import com.hansanhha.spring.event.entity.StockMarket;
+import com.hansanhha.spring.event.event.CircuitBreakerEvent;
+import com.hansanhha.spring.event.event.SuspendMarketEvent;
+import com.hansanhha.spring.event.pulisher.StockMarket;
 import com.hansanhha.spring.event.event.CloseMarketEvent;
 import com.hansanhha.spring.event.event.LaunchMarketEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
 
@@ -41,6 +40,16 @@ public class EventTests {
 
         assertThat(events
                 .stream(CloseMarketEvent.class)
+                .count())
+                .isEqualTo(1);
+    }
+
+    @Test
+    void StockMarketShouldSuspendMarketEvent() throws Exception {
+        stockMarket.circuitBreaker();
+
+        assertThat(events
+                .stream(SuspendMarketEvent.class)
                 .count())
                 .isEqualTo(1);
     }

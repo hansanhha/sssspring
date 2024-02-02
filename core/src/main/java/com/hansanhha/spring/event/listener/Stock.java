@@ -1,14 +1,16 @@
-package com.hansanhha.spring.event.entity;
+package com.hansanhha.spring.event.listener;
 
+import com.hansanhha.spring.event.event.SuspendMarketEvent;
 import com.hansanhha.spring.event.event.CloseMarketEvent;
 import com.hansanhha.spring.event.event.LaunchMarketEvent;
+import lombok.Getter;
 import org.springframework.context.event.EventListener;
 
 public abstract class Stock {
 
-    protected int price;
+    @Getter protected int price;
 
-    protected TransactionStatus status;
+    @Getter protected TransactionStatus status;
 
     void increase(int price) {
         if (price < 0) {
@@ -26,14 +28,20 @@ public abstract class Stock {
 
     @EventListener
     void active(LaunchMarketEvent event) {
-        setTransactionStatus((TransactionStatus) event.getSource());
+        setTransactionStatus(TransactionStatus.ACTIVE);
         log("active");
     }
 
     @EventListener
     void inactive(CloseMarketEvent event) {
-        setTransactionStatus((TransactionStatus) event.getSource());
+        setTransactionStatus(TransactionStatus.INACTIVE);
         log("stop");
+    }
+
+    @EventListener
+    void suspend(SuspendMarketEvent event) {
+        setTransactionStatus(TransactionStatus.SUSPEND);
+        log("suspend");
     }
 
     void setTransactionStatus(TransactionStatus status) {
@@ -45,4 +53,12 @@ public abstract class Stock {
     }
 
     abstract void log(String append);
+
+    private enum TransactionStatus {
+        ACTIVE, INACTIVE, SUSPEND
+    }
+
+    private enum MarketStatus {
+        OPEN, CLOSED
+    }
 }

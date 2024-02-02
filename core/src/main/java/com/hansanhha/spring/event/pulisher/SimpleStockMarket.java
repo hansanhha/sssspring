@@ -1,10 +1,15 @@
-package com.hansanhha.spring.event.entity;
+package com.hansanhha.spring.event.pulisher;
 
+import com.hansanhha.spring.event.event.CircuitBreakerEvent;
+import com.hansanhha.spring.event.event.CircuitBreakerEvent.CircuitBreakerEventTime;
 import com.hansanhha.spring.event.event.CloseMarketEvent;
 import com.hansanhha.spring.event.event.LaunchMarketEvent;
+import com.hansanhha.spring.event.event.SuspendMarketEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class SimpleStockMarket implements StockMarket {
@@ -22,6 +27,15 @@ public class SimpleStockMarket implements StockMarket {
     public void closeMarket() {
         applicationEventPublisher.publishEvent(new CloseMarketEvent());
         status = MarketStatus.CLOSED;
+    }
+
+    @Override
+    public void circuitBreaker() {
+        applicationEventPublisher.publishEvent(new SuspendMarketEvent());
+
+        LocalDateTime now = LocalDateTime.now();
+        applicationEventPublisher.publishEvent(
+                new CircuitBreakerEvent(new CircuitBreakerEventTime(now, now.plusMinutes(10))));
     }
 
     @Override
