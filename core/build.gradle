@@ -5,5 +5,8 @@ plugins {
 
 dependencies {
     implementation io.spring.boot
+    implementation io.spring.boot.data.jpa
     testImplementation io.spring.boot.test
+
+    runtimeOnly db.h2
 }

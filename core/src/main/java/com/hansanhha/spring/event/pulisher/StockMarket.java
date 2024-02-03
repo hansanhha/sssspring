@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationEventPublisherAware;
 
 public interface StockMarket extends ApplicationEventPublisherAware {
 
+    void registerStocks();
+
     void launchMarket();
 
     void closeMarket();

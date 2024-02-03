@@ -3,14 +3,34 @@ package com.hansanhha.spring.event.listener;
 import com.hansanhha.spring.event.event.SuspendMarketEvent;
 import com.hansanhha.spring.event.event.CloseMarketEvent;
 import com.hansanhha.spring.event.event.LaunchMarketEvent;
+import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.time.LocalDateTime;
+
+@Entity
+@Inheritance
+@DiscriminatorColumn(name="stock_name")
+@Getter
 public abstract class Stock {
 
-    @Getter protected int price;
+    protected Stock() {
+        status = TransactionStatus.INACTIVE;
+    }
 
-    @Getter protected TransactionStatus status;
+    @Id
+    @GeneratedValue
+    protected Long id;
+
+    protected int price;
+
+    protected TransactionStatus status;
 
     void increase(int price) {
         if (price < 0) {
@@ -56,9 +76,5 @@ public abstract class Stock {
 
     private enum TransactionStatus {
         ACTIVE, INACTIVE, SUSPEND
-    }
-
-    private enum MarketStatus {
-        OPEN, CLOSED
     }
 }
