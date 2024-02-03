@@ -1,5 +1,6 @@
 package com.hansanhha.spring.boot;
 
+import com.hansanhha.spring.boot.event.listener.SpringApplicationListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootApplication.class, args);
+        SpringApplication app = new SpringApplication(BootApplication.class);
+        app.addListeners(new SpringApplicationListener());
+        app.run(args);
     }
 }
